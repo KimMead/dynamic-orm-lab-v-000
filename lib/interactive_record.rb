@@ -48,5 +48,13 @@ class InteractiveRecord
       values << "'#{send(col_name)}'" unless send(col_name).nil?
     end
     values.join(", ")
-end
+  end
+
+  def self.find_by_name(name)
+    sql = <<-SQL 
+      SELECT * FROM #{table_name}
+      WHERE name = ?
+      SQL 
+
+      DB[:conn].execute(sql, name); 
 end
