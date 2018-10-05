@@ -63,10 +63,10 @@ class InteractiveRecord
       column_name = attribute.keys[0].to_s
       value_name = attribute.values[0]
 
-      sql = <<-SQL 
+      sql = <<-SQL
         SELECT * FROM #{table_name}
         WHERE #{column_name} = ?
-        SQL 
+        SQL
         DB[:conn].execute(sql, value_name);
-    end 
+    end
 end
